@@ -7,7 +7,7 @@ import { CartPage } from '../pages/CartPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 import { ThankYouPage } from '../pages/ThankYouPage';
 
-test('1. Happy flow test with standard user @regression @smoke', async ({ page, isMobile }) => {
+test('4. Performance glitch user flow @regression @smoke', async ({ page, isMobile }) => {
 
     const landingPage = new LandingPage(page);
     const inventoryPage = new InventoryPage(page);
@@ -16,7 +16,7 @@ test('1. Happy flow test with standard user @regression @smoke', async ({ page, 
     const thankYouPage = new ThankYouPage(page);
 
     //Login as standard user
-    await landingPage.loginAsStandardUser();
+    await landingPage.loginAsPerformanceGlitchUser();
     
     // add a product
     await inventoryPage.addProduct();
