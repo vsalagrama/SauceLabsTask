@@ -2,7 +2,6 @@ import { expect, Locator, type Page } from "@playwright/test";
 import {testDataObject} from '../tests/testData'
 export class CheckoutPage {
     
-   
     private firstname: Locator;
     private lastname: Locator;
     private zip: Locator;
@@ -39,7 +38,15 @@ export class CheckoutPage {
         await this.finish.click();
         console.log('Finish Button clicked');
     }
-    
+
+    async clickContinueProblemUser() {
+        await this.continue.click();
+        console.log('Continue Button clicked');
+        await this.page.locator('[data-test="checkout-info-container"] div').filter({ hasText: 'Error: Last Name is required' }).nth(2).isVisible();
+
+
+    }
+
    
 
 }

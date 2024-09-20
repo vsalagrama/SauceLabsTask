@@ -3,13 +3,15 @@ import { testDataObject } from '../tests/testData'
 export class ThankYouPage {
 
 
-
+    private openMenu: Locator;
+    private logoutButton: Locator;
 
 
     readonly page: Page
     constructor(page: Page) {
         this.page = page;
-
+        this.openMenu = page.getByRole('button', { name: 'Open Menu' });
+        this.logoutButton = page.locator('[data-test="logout-sidebar-link"]')
 
     }
     async verifyOrderStatus() {
@@ -18,5 +20,12 @@ export class ThankYouPage {
 
         console.log('Successfully placed the order');
     }
+    async logout() {
+        await this.openMenu.click();
+        await this.logoutButton.click();
+        console.log('Logged out successfully');
+    }
+
+
 
 }
